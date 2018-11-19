@@ -2,13 +2,13 @@
 Simple leveling system which can be used not only in darkrp
 
 ### Features
-* Compitable with any gamemode
-* Compitable with addons which compitable with [Vrondakis leveling system](https://github.com/vrondakis/Leveling-System)
-* Compitable with [Job System | Job Employer NPCs](https://www.gmodstore.com/market/view/4569)
+* Compatible with any gamemode
+* Compatible with addons which compatible with [Vrondakis leveling system](https://github.com/vrondakis/Leveling-System)
+* Compatible with [Job System | Job Employer NPCs](https://www.gmodstore.com/market/view/4569)
 * Has darkrp integration
 * Easy module system
 * Easy configurable
-* Compitable with MySQL(MySQLoo, tmysql4) or just sqlite
+* Compatible with MySQL(MySQLoo, tmysql4) or just sqlite
 
 ### For devs
 That hooks is available:

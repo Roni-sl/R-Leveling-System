@@ -20,7 +20,7 @@ Serverside:
 ```
 
 ### Suggest your modules please
-If you have an idea for module, compitablity with an addon, just open [Issue](https://github.com/Roni-sl/)
+If you have an idea for module, compitablity with an addon, just open [Issue](https://github.com/Roni-sl/R-Leveling-System/issues/new)
 
 ### ToDo
 * TTT support

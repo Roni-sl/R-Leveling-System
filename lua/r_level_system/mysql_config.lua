@@ -2,7 +2,7 @@
 -- IF YOU ON DARKRP THEN LEVEL SYSTEM USING DARKRP MYSQL CONFIG
 
 MySQLite.initialize({
-	EnableMySQL = true,
+	EnableMySQL = false,
 	Host = "127.0.0.1",
 	Username = "root",
 	Password = "",

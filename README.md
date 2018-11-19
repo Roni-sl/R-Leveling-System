@@ -14,9 +14,9 @@ Simple leveling system which can be used not only in darkrp
 That hooks is available:
 ```
 Serverside:
-    RLS.OnLevelChange(Player ply, number level): nothing to return
-    RLS.OnExpChange(Player ply, number exp, bool is_level_updated): nothing to return
-    RLS.UpdateExpAmount(Player ply, number exp): return number exp
+	RLS.OnLevelChange(Player ply, number level): nothing to return
+	RLS.OnExpChange(Player ply, number exp, bool is_level_updated): nothing to return
+	RLS.UpdateExpAmount(Player ply, number exp): return number exp
 ```
 
 ### Suggest your modules please

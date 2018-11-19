@@ -22,6 +22,6 @@ include_cl("r_level_system/cl_core.lua")
 local files, _ = file.Find("r_level_modules/*.lua", "LUA")
 
 for _, f in ipairs(files) do
-    if RLS.DisableModules[string.gsub(f, ".lua", "")] then continue end
-    include_sh("r_level_modules/"..f)
+	if RLS.DisableModules[string.gsub(f, ".lua", "")] then continue end
+	include_sh("r_level_modules/"..f)
 end

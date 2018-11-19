@@ -2,10 +2,10 @@
 -- IF YOU ON DARKRP THEN LEVEL SYSTEM USING DARKRP MYSQL CONFIG
 
 MySQLite.initialize({
-    EnableMySQL = true,
-    Host = "127.0.0.1",
-    Username = "root",
-    Password = "",
-    Database_name = "r_level_system",
-    Database_port = 3306
+	EnableMySQL = true,
+	Host = "127.0.0.1",
+	Username = "root",
+	Password = "",
+	Database_name = "r_level_system",
+	Database_port = 3306
 })

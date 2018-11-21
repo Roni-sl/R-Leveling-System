@@ -11,7 +11,7 @@ hook.Add("HUDPaint", "RLS.HUDPaint", function()
 	if not RLS.EnableHUD then return end
 
 	local scr_w, scr_h = ScrW(), ScrH()
-	local x, y = scr_w/3, 30
+	local x, y = scr_w/3, RLS.HUDHeight
 	local w, h = x, 2
 
 	exp = math.Approach(

@@ -5,6 +5,7 @@ RLS.Formula = function(level)
 end
 
 RLS.EnableHUD = true
+RLS.HUDHeight = 50
 
 RLS.SetLevelCommand = "!setlevel"
 RLS.AddLevelCommand = "!addlevel"

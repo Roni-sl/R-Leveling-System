@@ -8,7 +8,7 @@ config.AddLevelToItemsNames = true -- Adds name - Level 100 to names of item
 
 local function CheckLevel(ply, ent)
 
-	if ent.level and ent.level >= ply:GetLevel() then
+	if ent.level and ent.level > ply:GetLevel() then
 		
 		if config.message_style == 1 then
 			RLS:Notify(ply, string.format(config.message, ent.level))
@@ -32,7 +32,7 @@ hook.Add('playerCanChangeTeam', 'RLS.darkrp_integration.playerCanChangeTeam', fu
 
 	job = RPExtraTeams[job]
 
-	if job.level and job.level >= ply:GetLevel() then
+	if job.level and job.level > ply:GetLevel() then
 			
 		if config.message_style == 1 then
 			RLS:Notify(ply, string.format(config.message, job.level))

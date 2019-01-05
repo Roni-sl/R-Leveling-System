@@ -1,9 +1,9 @@
 # R Level System
-Simple leveling system which can be used not only in darkrp
+Simple leveling system that can be used not only in darkrp
 
 ### Features
 * Compatible with any gamemode
-* Compatible with addons which compatible with [Vrondakis leveling system](https://github.com/vrondakis/Leveling-System)
+* Compatible with addons that work with [Vrondakis leveling system](https://github.com/vrondakis/Leveling-System)
 * Compatible with [Job System | Job Employer NPCs](https://www.gmodstore.com/market/view/4569)
 * Has darkrp integration
 * Easy module system

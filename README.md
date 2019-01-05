@@ -1,5 +1,5 @@
 # R Level System
-Simple leveling system for DarkRP
+Simple leveling system for DarkRP(but will work with other gamemodes too)
 
 ### Features
 * Compatible with any gamemode

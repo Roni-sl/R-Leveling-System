@@ -7,7 +7,7 @@ Simple leveling system for DarkRP(but will work with other gamemodes too)
 * Compatible with [Job System | Job Employer NPCs](https://www.gmodstore.com/market/view/4569)
 * Has darkrp integration
 * Easy module system
-* Easy configurable
+* Easily configurable
 * Compatible with MySQL(MySQLoo, tmysql4) or just sqlite
 
 ### For devs

@@ -44,10 +44,14 @@ end)
 
 local meta = FindMetaTable("Player")
 
-function meta:SetLevel(lvl, run_hook)
+function meta:SetLevel(lvl, without_hook)
 	self:SetNWInt("RLS.Level", lvl)
 
-	self:SyncRLS()
+  self:SyncRLS()
+
+  if without_hook
+    return
+  end
 
 	hook.Run("RLS.OnLevelChange", self, lvl)
 end
@@ -56,12 +60,17 @@ function meta:AddLevel(lvl)
 	self:SetLevel(self:GetLevel() + lvl)
 end
 
-function meta:SetExp(exp, run_hook)
+function meta:SetExp(exp, without_hook)
 
 	self:SetNWInt("RLS.Exp", exp)
 
 	self:IsPassedLevel(function(is_level_updated)
-		self:SyncRLS()
+    self:SyncRLS()
+
+    if without_hook
+      return
+    end
+
 		hook.Run("RLS.OnExpChange", self, exp, is_level_updated)
 	end)
 end

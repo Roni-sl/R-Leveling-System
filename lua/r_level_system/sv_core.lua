@@ -25,7 +25,7 @@ hook.Add("PlayerInitialSpawn", "RLS.PlayerInitialSpawn", function(ply)
 				level = tonumber(data[1].level)
 				exp = tonumber(data[1].exp)
 			else
-				MySQLite.query(string.format("INSERT INTO r_level_system(steamid, level, exp) VALUES (%s, %d, %d);", 
+				MySQLite.query(string.format("INSERT INTO r_level_system(steamid, level, exp) VALUES (%s, %d, %d);",
 					steamid,
 					level,
 					exp
@@ -44,7 +44,7 @@ end)
 
 local meta = FindMetaTable("Player")
 
-function meta:SetLevel(lvl)
+function meta:SetLevel(lvl, run_hook)
 	self:SetNWInt("RLS.Level", lvl)
 
 	self:SyncRLS()
@@ -56,7 +56,7 @@ function meta:AddLevel(lvl)
 	self:SetLevel(self:GetLevel() + lvl)
 end
 
-function meta:SetExp(exp)
+function meta:SetExp(exp, run_hook)
 
 	self:SetNWInt("RLS.Exp", exp)
 
@@ -68,7 +68,7 @@ end
 
 function meta:AddExp(exp)
 	exp = hook.Run("RLS.UpdateExpAmount", self, exp) or exp
-	
+
 	self:SetExp(self:GetExp() + exp)
 end
 
@@ -85,14 +85,14 @@ end
 
 function meta:SyncRLS()
 	MySQLite.query(string.format([[
-			UPDATE r_level_system 
-			SET level = %d, 
-			exp = %d 
+			UPDATE r_level_system
+			SET level = %d,
+			exp = %d
 			WHERE steamid = %s;
 		]],
 		self:GetLevel(),
 		self:GetExp(),
-		MySQLite.SQLStr(self:SteamID())    
+		MySQLite.SQLStr(self:SteamID())
 	))
 end
 
@@ -134,7 +134,7 @@ concommand.Add("r", function(ply, cmd, args)
 
 		target:AddExp(value)
 		RLS.CommandNotify(ply, "add", value, "exp for", t_name)
-	end   
+	end
 end)
 
 hook.Add("PlayerSay", "RLS.PlayerSay", function(ply, text)

@@ -49,7 +49,7 @@ function meta:SetLevel(lvl, without_hook)
 
   self:SyncRLS()
 
-  if without_hook
+  if without_hook then
     return
   end
 
@@ -67,7 +67,7 @@ function meta:SetExp(exp, without_hook)
 	self:IsPassedLevel(function(is_level_updated)
     self:SyncRLS()
 
-    if without_hook
+    if without_hook then
       return
     end
 

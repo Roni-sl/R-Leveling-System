@@ -6,44 +6,40 @@ function RLS:DrawShadowText(text, font, x, y, color, tha, tva, shadow_color)
 	draw.SimpleText(text, font, x, y, color, tha, tva)
 end
 
+local function SmoothApproach(current, target, frame_time)
+	return math.Approach(
+    current,
+    target,
+    math.Clamp(
+      math.abs(target - current) * frame_time * 4, frame_time * 2, frame_time * 20000
+    )
+  )
+end
+
 local exp, need_exp, level = 0, 0, 0
 hook.Add("HUDPaint", "RLS.HUDPaint", function()
 	if not RLS.EnableHUD then return end
 
-	local scr_w, scr_h = ScrW(), ScrH()
-	local x, y = scr_w/3, RLS.HUDHeight
-	local w, h = x, 2
+	-- Screen and HUD positioning
+	local screenWidth, screenHeight = ScrW(), ScrH()
+	local hudWidth = screenWidth / 3
+	local hudX = hudWidth
+	local hudY = RLS.HUDHeight
+	local barHeight = 3
 
-	exp = math.Approach(
-		exp, LocalPlayer():GetExp(),
-		math.Clamp(
-			math.abs((LocalPlayer():GetExp() - exp) * FrameTime() * 4),
-			FrameTime() * 2,
-			FrameTime() * 20000
-		)
-	)
+	-- Smoothly approach current values
+	exp = SmoothApproach(exp, LocalPlayer():GetExp(), FrameTime())
+	need_exp = SmoothApproach(need_exp, LocalPlayer():GetNeedExp(), FrameTime())
+	level = SmoothApproach(level, LocalPlayer():GetLevel(), FrameTime())
 
-	need_exp = math.Approach(
-		need_exp, LocalPlayer():GetNeedExp(),
-		math.Clamp(
-			math.abs((LocalPlayer():GetNeedExp() - need_exp) * FrameTime() * 4),
-			FrameTime() * 2,
-			FrameTime() * 20000
-		)
-	)
+	-- Draw background bar
+	draw.RoundedBox(0, hudX, hudY, hudWidth, barHeight, Color(0,0,0,150))
 
-	level = math.Approach(
-		level, LocalPlayer():GetLevel(),
-		math.Clamp(
-			math.abs((LocalPlayer():GetLevel() - level) * FrameTime() * 4),
-			FrameTime() * 2,
-			FrameTime() * 20000
-		)
-	)
+	-- Draw experience progress bar (guard against division by zero)
+	local progress = (need_exp > 0) and (exp / need_exp) or 0
+	draw.RoundedBox(0, hudX, hudY, hudWidth * progress, barHeight, color_white)
 
-	draw.RoundedBox(0, w, y, w, 3, Color(0,0,0,150))
-	draw.RoundedBox(0, w, y, w*(exp/need_exp), 3, color_white)
-
-	RLS:DrawShadowText(math.ceil(level).." lvl", "RLS.MainFont", x+5, y-20, color_white, 0, 0)
-	RLS:DrawShadowText(math.ceil(exp/need_exp*100).."% ("..math.ceil(exp).."/"..math.ceil(need_exp).." exp)", "RLS.MainFont", x*2-5, y-20, color_white, 2, 0)
+	-- Draw level and experience text
+	RLS:DrawShadowText(math.ceil(level).." lvl", "RLS.MainFont", hudX+5, hudY-20, color_white, 0, 0)
+	RLS:DrawShadowText(math.ceil(progress*100).."% ("..math.ceil(exp).."/"..math.ceil(need_exp).." exp)", "RLS.MainFont", hudX+hudWidth-5, hudY-20, color_white, 2, 0)
 end)

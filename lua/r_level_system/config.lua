@@ -25,5 +25,5 @@ RLS.DisableModules = { -- Set to 'true' to disable it
 	["killing_player"] = false, -- Add reward for killing player
 	["darkrp_integration"] = true, -- Add integration to darkrp to support level for shop items and jobs
 	["vrondakis_comp"] = false, -- Add backward compatible, so, addons compitable with vrondakis level system now compitable with that too!
-	["multiplyer_exp"] = false, -- Add multiplier of Exp for each rank
+	["multiplier_exp"] = false, -- Add multiplier of Exp for each rank
 }

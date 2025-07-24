@@ -1,6 +1,6 @@
 RLS = RLS or {}
 
--- Thanks aStonedPenguin for solution 
+-- Thanks aStonedPenguin for solution
 local include_sv = (SERVER) and include or function() end
 local include_cl = (SERVER) and AddCSLuaFile or include
 local include_sh = function(f)
@@ -19,6 +19,7 @@ include_sv("r_level_system/sv_core.lua")
 include_cl("r_level_system/cl_core.lua")
 
 -- Modules loading
+if not RLS.DisableModules then RLS.DisableModules = {} end
 local files, _ = file.Find("r_level_modules/*.lua", "LUA")
 
 for _, f in ipairs(files) do
